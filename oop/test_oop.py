@@ -55,9 +55,12 @@ class TestStaffMethods:
         niamh.increase_salary(24000)
         assert niamh.salary == 124000
     
-    @pytest.mark.skip
+    
     def test_increase_salary_raises_exception_for_incorrect_input(self):
-        pass
+        niamh = Staff('niamh','mentor', 'classroom', 22, 100000)
+        with pytest.raises(Exception) as output:
+            niamh.increase_salary('four_pounds')
+        assert 'The amount added must be a positive number' in str(output.value)
 
     def test_fire_fires_with_hr_approval(self):
         niamh = Staff('niamh','mentor', 'classroom', 22, 124000)
@@ -66,9 +69,14 @@ class TestStaffMethods:
         niamh.fire(hr_report)
         assert niamh.employed_at_NC == False
 
-    @pytest.mark.skip
+   
     def test_fire_raises_exception_when_hr_approval_is_false(self):
-        pass
+        niamh = Staff('niamh','mentor', 'classroom', 22, 124000)
+        hr_report = {"approved": False}
+        with pytest.raises(Exception) as output:
+            niamh.fire(hr_report)
+        assert 'Staff cannot be fired until approval on hr_report'
+
 
 @pytest.mark.skip
 class TestClassroomStaffProperties:

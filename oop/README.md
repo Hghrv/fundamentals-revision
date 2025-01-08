@@ -11,6 +11,7 @@ However, there are still _a couple_ of tasks to complete.
 2. Build a test that utilises a custom Exception for the `fire` method, when the `hr_report = {"approved": False}`.
 
 _Are there other Exceptions you could use throughout this class?_
+_Student's answer: Other similar Exceptions could also be raised when the name, role, or department entered as instance arguments are not strings_
 
 ***
 
