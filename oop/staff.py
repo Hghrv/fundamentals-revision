@@ -20,4 +20,4 @@ class Staff():
         if(hr_report['approved']):
             self.employed_at_NC = False
         else:
-            raise Exception('Staff cannot be fired until offical approval on hr_report')
+            raise Exception('Staff cannot be fired until approval on hr_report')

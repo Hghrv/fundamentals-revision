@@ -10,3 +10,14 @@ class ClassroomStaff(Staff):
 
     def add_overtime(self, overtime_hours):
         self.overtime += overtime_hours
+    
+    def overtime_paid(self):
+        if self.working_hours == 0:
+            raise Exception('Working hours cannot be 0')
+        return self.overtime(salary/working_hours) 
+
+    def change_title(self):
+        if self.salary >= 50000:
+            self.title = 'senior developer'
+        elif self.salary >= 36000:
+            self.title = 'mid-level developer'

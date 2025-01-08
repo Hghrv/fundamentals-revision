@@ -69,16 +69,15 @@ class TestStaffMethods:
         niamh.fire(hr_report)
         assert niamh.employed_at_NC == False
 
-   
     def test_fire_raises_exception_when_hr_approval_is_false(self):
         niamh = Staff('niamh','mentor', 'classroom', 22, 124000)
         hr_report = {"approved": False}
         with pytest.raises(Exception) as output:
             niamh.fire(hr_report)
-        assert 'Staff cannot be fired until approval on hr_report'
+        assert 'Staff cannot be fired until approval on hr_report' in str(output.value)
 
 
-@pytest.mark.skip
+#@pytest.mark.skip
 class TestClassroomStaffProperties:
     def test_classroom_staff_initial_name_takes_argument_inherited_from_staff(self):
         niamh = ClassroomStaff('niamh', 'mentor', ['python'], 22, 123000)
@@ -108,7 +107,7 @@ class TestClassroomStaffProperties:
         niamh = ClassroomStaff('niamh', 'mentor', ['python'], 22, 123000)
         assert niamh.title == 'junior developer'
 
-@pytest.mark.skip
+#@pytest.mark.skip
 class TestClassroomStaffMethods:
     def test_add_overtime_increases_overtime_hours(self):
         niamh = ClassroomStaff('niamh', 'mentor', ['python'], 22, 123000)
@@ -123,3 +122,8 @@ class TestClassroomStaffMethods:
         assert niamh.overtime == 3
         niamh.add_overtime(5)
         assert niamh.overtime == 8
+    def test_exception_is_raised_when_working_hours_is_0(self):
+        niamh = ClassroomStaff('niamh', 'mentor', ['python'], 0, 123000)
+        with pytest.raises(Exception) as output:
+            niamh.overtime_paid()
+        assert 'Working hours cannot be 0' in str(output.value)
