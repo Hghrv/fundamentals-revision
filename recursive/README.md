@@ -13,3 +13,4 @@ Iteration is wonderful, when we _know_ what data looks like. But when we don't, 
 1. Use recursion in in `ghost_buster` to pass all the tests.
 
 2. There's an extra test that we haven't written - it's to do with the data we've passed in! What should we do to make sure it's ok? 
+`Student's answer: we should ensure integrity of data trhough a purity test` 
